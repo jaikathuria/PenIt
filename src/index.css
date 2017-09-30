@@ -1,0 +1,33 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+.head {
+  font-weight: 900;
+}
+
+.brand {
+  color: #262626 !important;
+  font-family: 'Indie Flower', cursive;
+}
+
+/* ---- Overriding Bootstrap Styles --- */
+.navbar-default {
+  background-color: #ffffff;
+}
+
+.navbar-header {
+  float: none;
+}
+
+.navbar-brand {
+  float: none;
+  display: block;
+  height: 60px;
+  font-size: 28px;
+  line-height: 30px;
+}
