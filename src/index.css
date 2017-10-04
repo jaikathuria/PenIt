@@ -6,8 +6,8 @@ body {
   background-color: #fafafa;
 }
 
-.head {
-  font-weight: 900;
+.big-bold {
+  font-weight: 700;
 }
 
 .brand {
@@ -15,6 +15,29 @@ body {
   font-family: 'Indie Flower', cursive;
 }
 
+.nav-margin {
+  margin-top: 80px;
+}
+
+.category {
+  padding: 30px 0;
+}
+
+.score {
+  font-size: 14px;
+}
+
+.bottom-20 {
+  margin-bottom: 20px;
+}
+
+.post-title {
+  margin-top: 10px;
+}
+
+.tool-box {
+  margin-left: 10px;
+}
 /* ---- Overriding Bootstrap Styles --- */
 .navbar-default {
   background-color: #ffffff;
@@ -30,4 +53,14 @@ body {
   height: 60px;
   font-size: 28px;
   line-height: 30px;
+}
+
+.badge {
+  display: inline-flex;
+  float: right;
+}
+
+.panel-title {
+  display: inline-flex;
+  font-size: 18px;
 }
