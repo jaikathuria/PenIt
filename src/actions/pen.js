@@ -2,21 +2,25 @@ export const ADD_PEN = "ADD_PEN"
 
 export const addPen = ({ title, content, time, author, category }) => ({
     type: ADD_PEN,
-    title,
-    content,
-    time,
-    author,
+    data: {
+        title,
+        content,
+        time,
+        author,
+    },
 })
 
 export const EDIT_PEN = "EDIT_PEN"
 
 export const editPen = ({ id, title, content, time, author, category }) => ({
     type: EDIT_PEN,
+    data: {
+        title,
+        content,
+        time,
+        author,
+    },
     id,
-    title,
-    content,
-    time,
-    author,
 })
 
 export const DELETE_PEN = "DELETE_PEN"

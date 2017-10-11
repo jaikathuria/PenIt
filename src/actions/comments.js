@@ -2,20 +2,25 @@ export const ADD_COMMENT = "ADD_COMMENT"
 
 export const addComment = ({ pen, content, author, time }) => ({
     type: ADD_COMMENT,
+    data: {
+      content,
+      author,
+      time,
+    },
     pen,
-    content,
-    author,
-    time,
+    id,
 })
 
 export const EDIT_COMMENT = "EDIT_COMMENT"
 
 export const editComment = ({ id, content, author, time }) => ({
     type: EDIT_COMMENT,
+    data: {
+      content,
+      author,
+      time,
+    },
     id,
-    content,
-    author,
-    time,
 })
 
 export const DELETE_COMMENT = "DELETE_COMMENT"
