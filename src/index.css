@@ -39,6 +39,40 @@ body {
 .tool-box {
   margin-left: 10px;
 }
+
+.top-10 {
+    margin-top: 20px;
+}
+
+.full-input {
+    width: 100%;
+}
+
+.category:hover {
+    background-color: #eee;
+}
+/* --- Modal CSS --- */
+.modal {
+    z-index: 1100; /* Greater than bootstraps Navbar */
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: block;
+}
+
+.close-modal {
+  z-index: 1100;
+  font-size: 20px;
+  padding: 10px;
+  position: fixed;
+  right: 10px;
+  cursor: pointer;
+}
+
+.padding-sides-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 /* ---- Overriding Bootstrap Styles --- */
 .navbar-default {
   background-color: #ffffff;

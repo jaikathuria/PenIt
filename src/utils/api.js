@@ -26,7 +26,6 @@ export const getCategories = () =>
 export const getAllPosts = () =>
     fetch(`${url}/posts`, { headers })
         .then(res => res.json())
-        .then(data => console.log(data))
   // Method to fetch posts by category
 export const getPosts = ( category ) =>
     fetch(`${url}/${category}/posts`, { headers })

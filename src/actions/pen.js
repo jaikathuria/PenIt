@@ -1,3 +1,22 @@
+import uuidv4  from 'uuid/v4'
+
+export const FETCH_PENS = "FETCH_PENS"
+
+export const fetchPens = ( pens ) => ({
+    type: FETCH_PENS,
+    data: pens.map(pen => {
+      return {
+        id: pen.id,
+        title: pen.title,
+        content: pen.body,
+        category: pen.category,
+        time: pen.timestamp,
+        vote: pen.voteScore,
+        author: pen.author
+      }
+    })
+})
+
 export const ADD_PEN = "ADD_PEN"
 
 export const addPen = ({ title, content, time, author, category }) => ({
@@ -7,8 +26,11 @@ export const addPen = ({ title, content, time, author, category }) => ({
         content,
         time,
         author,
+        category,
+        vote: 0,
     },
 })
+
 
 export const EDIT_PEN = "EDIT_PEN"
 

@@ -3,91 +3,33 @@ import { Route } from 'react-router-dom'
 import Home from './components/Home'
 import Posts from './components/Posts'
 import Post from './components/Post'
+import Modal from './components/Modal'
+import TopNav from './components/TopNav'
+import Categories from './components/Categories'
 import { reducer } from './reducer/index'
-import { addPen } from './actions/pen'
+import { connect } from 'react-redux'
 import * as api from './utils/api'
 
-
-export default class App extends Component {
-  state = {
-      category: [
-          "Category1",
-          "Category2",
-          "Category3",
-          "Category4",
-          "Category5",
-          "Category6",
-      ],
-      pens: [
-          {
-            title: "My First Pen",
-            content: "Some random garbage will go here",
-            author: "Jai Kathuria",
-            time: Date.now(),
-            id: 1,
-            score: 0,
-          },
-      ]
-  }
-
-  render() {
-    
-
+let renders = 0
+class App extends Component {
+  render(){
+    renders++
+    console.log("Props of App Component:", this.props)
+    console.log("Render Number:",renders)
     return (
       <div>
-        <Route
-          exact
-          path="/home"
-          render = {() => (
-            <div className="App">
-              <Home/>
-            </div>
-          )}
-        />
-      <Route
-          exact
-          path="/category"
-          render = {() => (
-            <Posts
-               pens = { this.state.pens }
-            />
-          )}
-        />
-      <Route
-        exact
-        path="/"
-        render = {() => (
-            <Post/>
-        )}
-        />
-     </div>
-
-    );
+          <TopNav title={`Pen-it`}/>
+          <Categories/>
+      </div>
+    )
   }
 }
 
-/* -- Test Cases
-
-
-const initialState = {
-      pens: [
-          {
-            title: "My First Pen",
-            content: "Some random garbage will go here",
-            author: "Jai Kathuria",
-            time: Date.now(),
-          }
-      ]
+const mapStatetoProps = ( state ) => {
+    return {
+        pens: state.pen.pens
+    }
 }
 
-const toAdd = {
-    title: "New Post Test",
-    content: "Again some crap",
-    author: "papa tumhare",
-    time: Date.now(),
-}
-console.log(initialState)
-console.log(reducer(initialState, addPen(toAdd)))
 
-
-  -- */
+export default connect(mapStatetoProps)(App)

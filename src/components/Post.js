@@ -5,7 +5,9 @@ export default class Post extends Component {
     render () {
         return (
           <div>
-            <TopNav/>
+            <TopNav
+              title="Pen-it"
+            />
             <div className="container nav-margin">
                 <div className="row">
                     <div className="col-xs-12 col-sm-offset-2 col-sm-8">

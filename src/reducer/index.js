@@ -3,9 +3,26 @@ import {
     editPen,
     deletePen
 } from './../actions/pen.js'
+import * as api from '../utils/api'
 
- export const pen = (state, action) => {
+import { combineReducers } from 'redux'
+
+const modal = (state = false, action) => {
     switch (action.type) {
+        case 'MODAL_TOGGLE':
+            return action.bool
+        default:
+            return state
+    }
+}
+
+const pen = (state = { pens: [] }, action) => {
+    switch (action.type) {
+        case 'FETCH_PENS':
+            return {
+              ...state,
+              pens: action.data
+            }
         case 'ADD_PEN':
             return {
                 ...state,
@@ -29,7 +46,7 @@ import {
     }
 }
 
-export const comment = (state, action) => {
+const comment = (state = { comments: [] }, action) => {
     switch (action.type) {
       case 'ADD_COMMENT':
           return {
@@ -54,3 +71,9 @@ export const comment = (state, action) => {
     }
 
 }
+
+export default combineReducers({
+  modal,
+  pen,
+  comment,
+})
