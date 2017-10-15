@@ -4,7 +4,7 @@ export default class Categories extends Component {
     render () {
         return (
           <div className="container nav-margin">
-            <ul className="nav nav-pills nav-justified">
+            <ul className="nav nav-pills nav-justified category">
               <li><a>Home</a></li>
               <li><a>Profile</a></li>
               <li><a>Messages</a></li>

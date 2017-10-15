@@ -20,10 +20,6 @@ body {
   margin-top: 80px;
 }
 
-.category {
-  padding: 30px 0;
-}
-
 .score {
   font-size: 14px;
 }
@@ -48,8 +44,8 @@ body {
     width: 100%;
 }
 
-.category:hover {
-    background-color: #eee;
+.category {
+    border: 1px solid #ddd;
 }
 /* --- Modal CSS --- */
 .modal {
@@ -98,4 +94,9 @@ body {
 .panel-title {
   display: inline-flex;
   font-size: 18px;
+}
+
+.navbar-btn {
+    margin-left: 10px;
+    margin-right: 10px;
 }

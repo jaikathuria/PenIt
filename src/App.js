@@ -5,6 +5,7 @@ import Posts from './components/Posts'
 import Post from './components/Post'
 import Modal from './components/Modal'
 import TopNav from './components/TopNav'
+import BottomSort from './components/BottomSort'
 import Categories from './components/Categories'
 import { reducer } from './reducer/index'
 import { connect } from 'react-redux'
@@ -20,6 +21,7 @@ class App extends Component {
       <div>
           <TopNav title={`Pen-it`}/>
           <Categories/>
+          <BottomSort/>
       </div>
     )
   }
