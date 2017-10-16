@@ -1,37 +1,23 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
-import Home from './components/Home'
-import Posts from './components/Posts'
-import Post from './components/Post'
-import Modal from './components/Modal'
-import TopNav from './components/TopNav'
-import BottomSort from './components/BottomSort'
-import Categories from './components/Categories'
-import { reducer } from './reducer/index'
+import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import ListView from './components/ListView'
 import * as api from './utils/api'
 
-let renders = 0
-class App extends Component {
+
+export default class App extends Component {
   render(){
-    renders++
-    console.log("Props of App Component:", this.props)
-    console.log("Render Number:",renders)
     return (
-      <div>
-          <TopNav title={`Pen-it`}/>
-          <Categories/>
-          <BottomSort/>
+      <div className="App">
+          <Switch>
+             <Route exact path="/" component={ListView} />
+             <Route exact path="/:category" component={ListView} />
+          </Switch>
       </div>
     )
   }
 }
 
-const mapStatetoProps = ( state ) => {
-    return {
-        pens: state.pen.pens
-    }
-}
 
 
-export default connect(mapStatetoProps)(App)
+//export default connect(mapStatetoProps)(App)

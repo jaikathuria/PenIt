@@ -30,7 +30,6 @@ export const getAllPosts = () =>
 export const getPosts = ( category ) =>
     fetch(`${url}/${category}/posts`, { headers })
         .then(res => res.json())
-        .then(data => console.log(data))
 // Method to add new posts
 /*
 * params *

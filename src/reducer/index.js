@@ -1,11 +1,35 @@
-import {
-    addPen,
-    editPen,
-    deletePen
-} from './../actions/pen.js'
 import * as api from '../utils/api'
 
 import { combineReducers } from 'redux'
+
+const categories = [
+      {
+        name: 'react',
+        path: 'react'
+      },
+      {
+        name: 'redux',
+        path: 'redux'
+      },
+      {
+        name: 'udacity',
+        path: 'udacity'
+      }
+]
+
+const category = ( state = { categories }, action ) => {
+    switch (action.type) {
+      case 'FETCH_CATEGORIES':
+          return {
+              ...state,
+              categories: action.data
+          }
+
+      default:
+          return state
+
+    }
+}
 
 const modal = (state = false, action) => {
     switch (action.type) {
@@ -74,6 +98,7 @@ const comment = (state = { comments: [] }, action) => {
 
 export default combineReducers({
   modal,
+  category,
   pen,
   comment,
 })

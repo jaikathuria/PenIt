@@ -4,8 +4,7 @@ import TopNav from './TopNav'
 export default class Posts extends Component {
     render () {
         return (
-          <div>
-            <div className="container">
+            <div className="container bottom-50">
                 <div className="row">
                     <div className="col-xs-12 col-sm-offset-2 col-sm-8">
                       <ul className="list-group">
@@ -41,7 +40,7 @@ export default class Posts extends Component {
                     </div>
                 </div>
               </div>
-            </div>
+
         )
     }
 }

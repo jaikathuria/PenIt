@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class TopNav extends Component {
     render () {
@@ -8,7 +9,7 @@ export default class TopNav extends Component {
               <div className="row">
                 <div className="col-xs-12">
                   <div className="navbar-header text-center">
-                    <a className="navbar-brand brand" href="">{this.props.title}</a>
+                    <Link className="navbar-brand brand" to="/">{this.props.title}</Link>
                   </div>
                 </div>
               </div>
