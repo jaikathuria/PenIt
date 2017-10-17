@@ -106,7 +106,6 @@ export const deletePost = (id) =>
         }
     })
         .then(res => res.json())
-        .then(data => console.log(data))
 // Method to Get all comments for a given post
 export const fetchComments = (postId) =>
     fetch(`${url}/posts/${postId}/comments`,{ headers })

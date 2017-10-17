@@ -10,7 +10,8 @@ export const fetchPens = ( pens ) => ({
         category: pen.category,
         time: pen.timestamp,
         vote: pen.voteScore,
-        author: pen.author
+        author: pen.author,
+        deleted: pen.deleted,
       }
     })
 })
@@ -26,7 +27,8 @@ export const fetchPen = ( pen ) => ({
       category: pen.category,
       time: pen.timestamp,
       vote: pen.voteScore,
-      author: pen.author
+      author: pen.author,
+      deleted: pen.deleted,
     }
 })
 

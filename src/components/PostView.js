@@ -28,7 +28,6 @@ class PostView extends Component {
     }
 
     render() {
-      console.log('PostView:', this.props)
         return (
           <div>
             <TopNav title={`Pen-it`}/>

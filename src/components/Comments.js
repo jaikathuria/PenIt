@@ -25,7 +25,7 @@ class Comments extends Component {
     }
 
     render () {
-        const comments = this.props.comments
+        const comments = this.props.comments.filter(comment => !comment.deleted)
         return (
           <div className="container bottom-70">
             <div className="row">
@@ -35,10 +35,10 @@ class Comments extends Component {
                     <div className="list-group-item" key={comment.id}>
                       <div>
                         <div className="list-group-item-text">
-                          { comment.content }
+                          { comment.content || "Some great comment is comming here "}
                         </div>
                         <div className="list-group-item-text author big-bold">
-                          - { comment.author }
+                          - { comment.author || "Definitely someone big said this"}
                         </div>
                       </div>
                       <div className="comment-box">
@@ -52,7 +52,7 @@ class Comments extends Component {
                         </div>
                         <div className="btn-group btn-group-sm pull-right">
                           <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-chevron-up"></span></button>
-                          <button className="btn btn-default"><span className="badge score-sm">{ comment.vote }</span></button>
+                          <button className="btn btn-default"><span className="badge score-sm">{ comment.vote || 0 }</span></button>
                           <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                       </div>

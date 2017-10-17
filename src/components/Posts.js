@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 
 export default class Posts extends Component {
     render () {
+        const pens = this.props.pens.filter(pen => !pen.deleted)
         return (
             <div className="container bottom-50">
                 <div className="row">
                     <div className="col-xs-12 col-sm-offset-2 col-sm-8">
                       <ul className="list-group">
-                        { this.props.pens.map((pen)=>(
+                        { pens.map((pen)=>(
                           <li className="list-group-item" key={ pen.id }>
                               <div className="btn-group pull-right tool-box">
                                 <button type="button" className="btn btn-default">
