@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { connect } from 'react-redux'
 import ListView from './components/ListView'
-import * as api from './utils/api'
+import PostView from './components/PostView'
 
 
 export default class App extends Component {
@@ -13,11 +12,10 @@ export default class App extends Component {
              <Route exact path="/" component={ListView} />
              <Route exact path="/:category" component={ListView} />
           </Switch>
+          <Switch>
+              <Route path="/:category/:id" component={PostView} />
+          </Switch>
       </div>
     )
   }
 }
-
-
-
-//export default connect(mapStatetoProps)(App)

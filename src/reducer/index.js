@@ -1,5 +1,3 @@
-import * as api from '../utils/api'
-
 import { combineReducers } from 'redux'
 
 const categories = [
@@ -40,7 +38,7 @@ const modal = (state = false, action) => {
     }
 }
 
-const pen = (state = { pens: [] }, action) => {
+const pen = (state = { pens: [], currentPen: {} }, action) => {
     switch (action.type) {
         case 'FETCH_PENS':
             return {
@@ -65,6 +63,11 @@ const pen = (state = { pens: [] }, action) => {
                 ...state,
                 pens: state.pens.filter(pen => pen.id !== action.data)
             }
+       case 'FETCH_PEN':
+            return {
+                ...state,
+                currentPen: action.data
+            }
         default:
             return state
     }
@@ -88,7 +91,12 @@ const comment = (state = { comments: [] }, action) => {
       case 'DELETE_COMMENT':
           return {
               ...state,
-              comment: state.comments.filter(comment => comment.id !== action.data)
+              comments: state.comments.filter(comment => comment.id !== action.data)
+          }
+      case 'FETCH_COMMENT':
+          return {
+              ...state,
+              comments: action.data
           }
       default:
           return state

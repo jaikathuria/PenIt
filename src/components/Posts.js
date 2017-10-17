@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TopNav from './TopNav'
+import { Link } from 'react-router-dom'
 
 export default class Posts extends Component {
     render () {
@@ -24,9 +24,9 @@ export default class Posts extends Component {
                                 <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-chevron-down"></span></button>
                               </div>
                               <div className="list-group-item-heading">
-                                <a><h3 className="post-title">
+                                <Link to={`/${pen.category}/${pen.id}`}><h3 className="post-title">
                                   { pen.title }
-                                </h3></a>
+                                </h3></Link>
                               </div>
                               <p className="list-group-item-text">
                                  { pen.content }

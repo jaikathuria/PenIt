@@ -1,5 +1,3 @@
-import uuidv4  from 'uuid/v4'
-
 export const FETCH_PENS = "FETCH_PENS"
 
 export const fetchPens = ( pens ) => ({
@@ -16,6 +14,22 @@ export const fetchPens = ( pens ) => ({
       }
     })
 })
+
+export const FETCH_PEN = "FETCH_PEN"
+
+export const fetchPen = ( pen ) => ({
+  type: FETCH_PEN,
+  data: {
+      id: pen.id,
+      title: pen.title,
+      content: pen.body,
+      category: pen.category,
+      time: pen.timestamp,
+      vote: pen.voteScore,
+      author: pen.author
+    }
+})
+
 
 export const ADD_PEN = "ADD_PEN"
 

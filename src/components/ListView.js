@@ -5,10 +5,8 @@ import TopNav from './TopNav'
 import Categories from './Categories'
 import Posts from './Posts'
 import BottomSort from './BottomSort'
-
 /* Import API methods */
 import { getAllPosts, getPosts } from '../utils/api'
-
 /* Import Action */
 import { fetchPens } from '../actions/pen'
 
@@ -23,7 +21,7 @@ class ListView extends Component {
     componentWillReceiveProps( newProps ) {
         if(newProps.match.params.category !== this.props.match.params.category){
             const category = newProps.match.params.category || false
-            this.getPens(category)
+            category && this.getPens(category)
         }
     }
 
