@@ -35,7 +35,7 @@ class PostView extends Component {
             <Post pen={this.props.pen}/>
             <Comments postid={this.props.pen.id}/>
             <BottomSort/>
-            <CommentInput comment={{}}/>
+            <CommentInput comment={{}} postid={this.props.pen.id}/>
           </div>
         )
     }

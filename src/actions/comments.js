@@ -19,15 +19,18 @@ export const getComments = ( comments ) => ({
 
 export const ADD_COMMENT = "ADD_COMMENT"
 
-export const addComment = ({ pen, content, author, time, id }) => ({
+export const addComment = ( comment ) => ({
     type: ADD_COMMENT,
     data: {
-      content,
-      author,
-      time,
-    },
-    pen,
-    id,
+      id: comment.id,
+      parentId: comment.parentId,
+      time: comment.timestamp,
+      content: comment.body,
+      author: comment.author,
+      vote: comment.voteScore,
+      deleted: comment.deleted,
+      parentDeleted: comment.parentDeleted,
+    }
 })
 
 export const EDIT_COMMENT = "EDIT_COMMENT"
