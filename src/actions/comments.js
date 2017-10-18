@@ -44,9 +44,9 @@ export const editComment = ({ id, content, author, time }) => ({
 
 export const DELETE_COMMENT = "DELETE_COMMENT"
 
-export const deleteComment = ({ id }) => ({
+export const deleteComment = ( comment ) => ({
     type: DELETE_COMMENT,
-    id,
+    id: comment.id,
 })
 
 export const VOTE_COMMENT = "VOTE_COMMENT"

@@ -133,6 +133,10 @@ export const addComment = (postId, { body, author }) =>
         })
     })
       .then(res => res.json())
+// addComment("6ni6ok3ym7mf1p33lnez", {
+//   body: "Ek adda comment orr kar deta hun ",
+//   author: "Papa ji hi hai"
+// })
 // Method to edit comment for a given comment ID.
 /*
 * params *
@@ -167,7 +171,7 @@ export const voteComment = (id, score) => {
         .then(res => res.json())
 }
 // Method to Delete the comment
-export const deleteComment = (id) =>
+export const deleteAPIComment = (id) =>
     fetch(`${url}/comments/${id}`, {
         method: 'DELETE',
         headers: {

@@ -5,6 +5,7 @@ import TopNav from './TopNav'
 import Post from './Post'
 import Comments from './Comments'
 import BottomSort from './BottomSort'
+import CommentInput from './CommentInput'
 /* Import API methods */
 import { getPost } from '../utils/api'
 /* Import Action */
@@ -34,6 +35,7 @@ class PostView extends Component {
             <Post pen={this.props.pen}/>
             <Comments postid={this.props.pen.id}/>
             <BottomSort/>
+            <CommentInput comment={{}}/>
           </div>
         )
     }

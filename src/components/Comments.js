@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 /* Import API methods */
-import { fetchComments } from '../utils/api'
+import { fetchComments, deleteAPIComment } from '../utils/api'
 /* Import Action */
-import { getComments } from '../actions/comments'
+import { getComments, deleteComment } from '../actions/comments'
 
 
 class Comments extends Component {
@@ -22,6 +22,10 @@ class Comments extends Component {
 
     dispatchComments( id ) {
         fetchComments( id ).then(comments => this.props.dispatch(getComments( comments )))
+    }
+
+    deleteHandler( id ) {
+        deleteAPIComment( id ).then(comment => this.props.dispatch(deleteComment( comment )))
     }
 
     render () {
@@ -46,7 +50,7 @@ class Comments extends Component {
                           <button type="button" className="btn btn-default">
                             <span className="glyphicon glyphicon-pencil"></span>
                           </button>
-                          <button type="button" className="btn btn-default">
+                          <button type="button" className="btn btn-default" onClick={()=>{ this.deleteHandler( comment.id )}}>
                             <span className="glyphicon glyphicon-trash"></span>
                           </button>
                         </div>

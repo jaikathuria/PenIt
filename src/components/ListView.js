@@ -21,7 +21,7 @@ class ListView extends Component {
     componentWillReceiveProps( newProps ) {
         if(newProps.match.params.category !== this.props.match.params.category){
             const category = newProps.match.params.category || false
-            category && this.getPens(category)
+            this.getPens(category)
         }
     }
 

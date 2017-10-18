@@ -91,7 +91,13 @@ const comment = (state = { comments: [] }, action) => {
       case 'DELETE_COMMENT':
           return {
               ...state,
-              comments: state.comments.filter(comment => comment.id !== action.data)
+              comments: state.comments.map(comment => {
+                  if (comment.id === action.id) {
+                      comment.deleted = true
+                      return comment
+                  }
+                  return comment
+              })
           }
       case 'FETCH_COMMENT':
           return {
