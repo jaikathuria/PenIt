@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import ListView from './components/ListView'
 import PostView from './components/PostView'
+import EditView from './components/EditView'
 
 
 export default class App extends Component {
@@ -13,7 +14,8 @@ export default class App extends Component {
              <Route exact path="/:category" component={ListView} />
           </Switch>
           <Switch>
-              <Route path="/:category/:id" component={PostView} />
+              <Route exact path="/:category/:id" component={PostView} />
+              <Route exact path="/:category/:id/edit" component={EditView}/>
           </Switch>
       </div>
     )

@@ -48,15 +48,18 @@ const pen = (state = { pens: [], currentPen: {} }, action) => {
         case 'ADD_PEN':
             return {
                 ...state,
-                pens: state.pens.concat(action.data)
+                pens: state.pens.concat(action.data),
+                currentPen: action.data
             }
         case 'EDIT_PEN':
             return {
                 ...state,
                 pens: state.pens.map((pen)=>{
-                    if(pen.id === action.id) return action.data
-                    return pen
-                })
+                  if(pen.id === action.data.id)
+                    return action.data
+                  return pen
+                }),
+                currentPen: action.data
             }
         case 'DELETE_PEN':
             return {
@@ -79,7 +82,7 @@ const pen = (state = { pens: [], currentPen: {} }, action) => {
                 ...state,
                 currentPen: {
                     ...state.currentPen,
-                    vote: action.vote 
+                    vote: action.vote
                 },
                 pens: state.pens.map(pen => {
                     if(pen.id === action.id){

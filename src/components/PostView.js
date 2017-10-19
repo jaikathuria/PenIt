@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 /* React Components */
+import Modal from './Modal'
 import TopNav from './TopNav'
 import Post from './Post'
 import Comments from './Comments'
@@ -31,6 +32,7 @@ class PostView extends Component {
     render() {
         return (
           <div>
+            <Modal/>
             <TopNav title={`Pen-it`}/>
             <Post pen={this.props.pen}/>
             <Comments postid={this.props.pen.id}/>

@@ -39,7 +39,7 @@ export const getPosts = ( category ) =>
     - author: @string
     - category: @string
 */
-export const addPost = ({ title, body, author, category}) =>
+export const addPost = ({ title, body, author, category }) =>
     fetch(`${url}/posts`, {
         method: 'POST',
         headers: {
@@ -56,12 +56,6 @@ export const addPost = ({ title, body, author, category}) =>
         })
     })
     .then(res => res.json())
-    // addPost({
-    //   "title":"Title hi hai",
-    //   "body":"Kuch bhi daal do ",
-    //   "author":"Jai",
-    //   "category":"react",
-    // })
 // Method to get post by id
 export const getPost = (id) =>
     fetch(`${url}/posts/${id}`, { headers })

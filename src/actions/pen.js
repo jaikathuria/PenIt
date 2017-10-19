@@ -35,30 +35,36 @@ export const fetchPen = ( pen ) => ({
 
 export const ADD_PEN = "ADD_PEN"
 
-export const addPen = ({ title, content, time, author, category }) => ({
+export const addPen = ( pen )  => ({
     type: ADD_PEN,
     data: {
-        title,
-        content,
-        time,
-        author,
-        category,
-        vote: 0,
-    },
+        id: pen.id,
+        title: pen.title,
+        content: pen.body,
+        category: pen.category,
+        time: pen.timestamp,
+        vote: pen.voteScore,
+        author: pen.author,
+        deleted: pen.deleted,
+    }
 })
 
 
 export const EDIT_PEN = "EDIT_PEN"
 
-export const editPen = ({ id, title, content, time, author, category }) => ({
+export const editPen = ( pen ) => ({
     type: EDIT_PEN,
     data: {
-        title,
-        content,
-        time,
-        author,
-    },
-    id,
+        id: pen.id,
+        title: pen.title,
+        content: pen.body,
+        category: pen.category,
+        time: pen.timestamp,
+        vote: pen.voteScore,
+        author: pen.author,
+        deleted: pen.deleted,
+    }
+
 })
 
 export const DELETE_PEN = "DELETE_PEN"
