@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
 
-export default class Posts extends Component {
+class Posts extends Component {
     render () {
         const pens = this.props.pens.filter(pen => !pen.deleted)
         return (
@@ -12,11 +13,11 @@ export default class Posts extends Component {
                         { pens.map((pen)=>(
                           <li className="list-group-item" key={ pen.id }>
                               <div className="btn-group pull-right tool-box">
-                                <button type="button" className="btn btn-default">
+                                <button type="button" className="btn btn-default" onClick={ () => { this.props.history.push(`/${pen.category}/${pen.id}/edit`)}}>
                                     <span className="glyphicon glyphicon-pencil"></span>
                                 </button>
-                                <button type="button" className="btn btn-default">
-                                    <span className="glyphicon glyphicon-trash" onClick={()=>{this.props.delete(pen.id)}}></span>
+                                <button type="button" className="btn btn-default" onClick={()=>{this.props.delete(pen.id)}}>
+                                    <span className="glyphicon glyphicon-trash"></span>
                                 </button>
                               </div>
                               <div className="btn-group pull-right">
@@ -45,3 +46,6 @@ export default class Posts extends Component {
         )
     }
 }
+
+
+export default withRouter(Posts)

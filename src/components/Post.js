@@ -31,7 +31,7 @@ class Post extends Component {
                             <div className="text-center">
                               <div className="btn-group btn-group-sm top-xs-10">
                                 <button type="button" className="btn btn-default">
-                                    <span className="glyphicon glyphicon-pencil"></span>
+                                    <span className="glyphicon glyphicon-pencil" onClick={ () => { this.props.history.push(`/${pen.category}/${pen.id}/edit`)}}></span>
                                 </button>
                                 <button type="button" className="btn btn-default">
                                     <span className="glyphicon glyphicon-trash" onClick={ () => { this.deleteHandler( pen.id ) } }></span>
