@@ -68,10 +68,20 @@ export const deletePen = ( pen ) => ({
     id: pen.id,
 })
 
-export const VOTE_POST = "VOTE_POST"
+export const VOTE_PEN = "VOTE_PEN"
 
-export const votePost = ({ id, score }) => ({
-    type: VOTE_POST,
-    id,
-    score,
+export const votePen = ( pen ) => ({
+    type: VOTE_PEN,
+    id: pen.id,
+    vote: pen.voteScore,
+    data: {
+      id: pen.id,
+      title: pen.title,
+      content: pen.body,
+      category: pen.category,
+      time: pen.timestamp,
+      vote: pen.voteScore,
+      author: pen.author,
+      deleted: pen.deleted,
+    }
 })

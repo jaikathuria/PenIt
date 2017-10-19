@@ -162,7 +162,7 @@ export const editComment = (id, { body }) =>
     })
     .then(res => res.json())
 // Method to vote a comment
-export const voteComment = (id, score) => {
+export const voteAPIComment = (id, score) => {
     const option = score > 0 ? "upVote" : "downVote"
     return fetch(`${url}/comments/${id}`, {
       method: 'POST',

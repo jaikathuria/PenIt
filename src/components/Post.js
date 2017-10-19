@@ -3,15 +3,19 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 /* Import API methods */
-import { deletePost  } from '../utils/api'
+import { deletePost, votePost  } from '../utils/api'
 /* Import Action */
-import { deletePen } from '../actions/pen'
+import { deletePen, votePen } from '../actions/pen'
 
 class Post extends Component {
 
-    deleteHandler( penid ) {
+    deleteHandler = ( penid ) => {
         deletePost( penid ).then(pen => this.props.dispatch(deletePen( pen )))
         this.props.history.push('/')
+    }
+
+    vote = ( id, score ) => {
+        votePost( id, score ).then(pen => this.props.dispatch(votePen( pen )))
     }
 
     render () {
@@ -43,9 +47,9 @@ class Post extends Component {
                 </div>
                 <div className="row text-center">
                   <div className="btn-group bottom-20">
-                    <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-chevron-up"></span></button>
+                    <button type="button" className="btn btn-default" onClick={ ()=> {this.vote(pen.id,1)} }><span className="glyphicon glyphicon-chevron-up"></span></button>
                     <button className="btn btn-default"><span className="badge score">{ pen.vote || 0 }</span></button>
-                    <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-chevron-down"></span></button>
+                    <button type="button" className="btn btn-default" onClick={ ()=> {this.vote(pen.id,-1)} }><span className="glyphicon glyphicon-chevron-down"></span></button>
                   </div>
                 </div>
               </div>

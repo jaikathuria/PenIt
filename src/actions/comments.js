@@ -54,8 +54,8 @@ export const deleteComment = ( comment ) => ({
 
 export const VOTE_COMMENT = "VOTE_COMMENT"
 
-export const voteComment = ({ id, score }) => ({
-    type: voteComment,
-    id,
-    score,
+export const voteComment = ( comment ) => ({
+    type: VOTE_COMMENT,
+    id: comment.id,
+    vote: comment.voteScore,
 })

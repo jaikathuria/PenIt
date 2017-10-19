@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 /* Import API methods */
-import { fetchComments, deleteAPIComment } from '../utils/api'
+import { fetchComments, deleteAPIComment, voteAPIComment } from '../utils/api'
 /* Import Action */
-import { getComments, deleteComment } from '../actions/comments'
+import { getComments, deleteComment, voteComment } from '../actions/comments'
 
 
 class Comments extends Component {
@@ -24,8 +24,12 @@ class Comments extends Component {
         fetchComments( id ).then(comments => this.props.dispatch(getComments( comments )))
     }
 
-    deleteHandler( id ) {
+    deleteHandler = ( id ) => {
         deleteAPIComment( id ).then(comment => this.props.dispatch(deleteComment( comment )))
+    }
+
+    vote = (id, score) => {
+        voteAPIComment( id, score ).then( comment => this.props.dispatch( voteComment( comment )))
     }
 
     render () {
@@ -55,9 +59,9 @@ class Comments extends Component {
                           </button>
                         </div>
                         <div className="btn-group btn-group-sm pull-right">
-                          <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-chevron-up"></span></button>
+                          <button type="button" className="btn btn-default" onClick={()=>{this.vote(comment.id, 1)}}><span className="glyphicon glyphicon-chevron-up"></span></button>
                           <button className="btn btn-default"><span className="badge score-sm">{ comment.vote || 0 }</span></button>
-                          <button type="button" className="btn btn-default"><span className="glyphicon glyphicon-chevron-down"></span></button>
+                          <button type="button" className="btn btn-default" onClick={()=>{this.vote(comment.id, -1)}}><span className="glyphicon glyphicon-chevron-down"></span></button>
                         </div>
                       </div>
                     </div>

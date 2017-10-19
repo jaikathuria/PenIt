@@ -69,10 +69,25 @@ const pen = (state = { pens: [], currentPen: {} }, action) => {
                     return pen
                 })
             }
-       case 'FETCH_PEN':
+        case 'FETCH_PEN':
             return {
                 ...state,
                 currentPen: action.data
+            }
+        case 'VOTE_PEN':
+            return {
+                ...state,
+                currentPen: {
+                    ...state.currentPen,
+                    vote: action.vote 
+                },
+                pens: state.pens.map(pen => {
+                    if(pen.id === action.id){
+                        pen.vote = action.vote
+                        return pen
+                    }
+                    return pen
+                })
             }
         default:
             return state
@@ -81,11 +96,13 @@ const pen = (state = { pens: [], currentPen: {} }, action) => {
 
 const comment = (state = { comments: [] }, action) => {
     switch (action.type) {
+
       case 'ADD_COMMENT':
           return {
               ...state,
               comments: state.comments.concat(action.data)
           }
+
       case 'EDIT_COMMENT':
           return {
               ...state,
@@ -94,6 +111,7 @@ const comment = (state = { comments: [] }, action) => {
                   return comment
               })
           }
+
       case 'DELETE_COMMENT':
           return {
               ...state,
@@ -105,11 +123,25 @@ const comment = (state = { comments: [] }, action) => {
                   return comment
               })
           }
+
       case 'FETCH_COMMENT':
           return {
               ...state,
               comments: action.data
           }
+
+      case 'VOTE_COMMENT':
+          return {
+              ...state,
+              comments: state.comments.map(comment => {
+                  if(comment.id === action.id) {
+                      comment.vote = action.vote
+                      return comment
+                  }
+                  return comment
+              })
+          }
+
       default:
           return state
     }
