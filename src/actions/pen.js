@@ -63,9 +63,9 @@ export const editPen = ({ id, title, content, time, author, category }) => ({
 
 export const DELETE_PEN = "DELETE_PEN"
 
-export const deletePen = ({ id }) => ({
+export const deletePen = ( pen ) => ({
     type: DELETE_PEN,
-    id,
+    id: pen.id,
 })
 
 export const VOTE_POST = "VOTE_POST"

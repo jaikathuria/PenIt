@@ -6,9 +6,9 @@ import Categories from './Categories'
 import Posts from './Posts'
 import BottomSort from './BottomSort'
 /* Import API methods */
-import { getAllPosts, getPosts } from '../utils/api'
+import { getAllPosts, getPosts,  deletePost } from '../utils/api'
 /* Import Action */
-import { fetchPens } from '../actions/pen'
+import { fetchPens, deletePen } from '../actions/pen'
 
 class ListView extends Component {
 
@@ -32,6 +32,10 @@ class ListView extends Component {
       getAllPosts().then(pens => this.props.dispatch(fetchPens(pens)))
     }
 
+    handleDelete = ( penid ) => {
+        deletePost( penid ).then(pen => this.props.dispatch(deletePen( pen )))
+    }
+
     render() {
         const pens = this.props.pens
         return (
@@ -39,7 +43,9 @@ class ListView extends Component {
             <TopNav title={`Pen-it`}/>
             <Categories/>
             <Posts
-            pens={pens}/>
+            pens={pens}
+            delete={this.handleDelete}
+            />
             <BottomSort/>
           </div>
         )

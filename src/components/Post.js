@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
-import { deletePost } from '../utils/api'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
-export default class Post extends Component {
+/* Import API methods */
+import { deletePost  } from '../utils/api'
+/* Import Action */
+import { deletePen } from '../actions/pen'
+
+class Post extends Component {
 
     deleteHandler( penid ) {
-
+        deletePost( penid ).then(pen => this.props.dispatch(deletePen( pen )))
+        this.props.history.push('/')
     }
 
     render () {
@@ -23,7 +30,7 @@ export default class Post extends Component {
                                     <span className="glyphicon glyphicon-pencil"></span>
                                 </button>
                                 <button type="button" className="btn btn-default">
-                                    <span className="glyphicon glyphicon-trash"></span>
+                                    <span className="glyphicon glyphicon-trash" onClick={ () => { this.deleteHandler( pen.id ) } }></span>
                                 </button>
                               </div>
                             </div>
@@ -46,3 +53,9 @@ export default class Post extends Component {
         )
     }
 }
+
+const mapStatetoProps = (state) =>({
+
+})
+
+export default withRouter(connect(mapStatetoProps)(Post))

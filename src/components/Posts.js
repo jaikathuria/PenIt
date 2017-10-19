@@ -16,7 +16,7 @@ export default class Posts extends Component {
                                     <span className="glyphicon glyphicon-pencil"></span>
                                 </button>
                                 <button type="button" className="btn btn-default">
-                                    <span className="glyphicon glyphicon-trash"></span>
+                                    <span className="glyphicon glyphicon-trash" onClick={()=>{this.props.delete(pen.id)}}></span>
                                 </button>
                               </div>
                               <div className="btn-group pull-right">

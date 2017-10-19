@@ -61,7 +61,13 @@ const pen = (state = { pens: [], currentPen: {} }, action) => {
         case 'DELETE_PEN':
             return {
                 ...state,
-                pens: state.pens.filter(pen => pen.id !== action.data)
+                pens: state.pens.map(pen => {
+                    if(pen.id === action.id){
+                        pen.deleted = true
+                        return pen
+                    }
+                    return pen
+                })
             }
        case 'FETCH_PEN':
             return {
