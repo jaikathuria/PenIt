@@ -10,8 +10,18 @@ class Posts extends Component {
     openEditModal = ( id ) => {
         this.props.dispatch(editPenModal(id))
     }
+
+    sortPens = ( pens ) => {
+        switch(this.props.sort.order) {
+            case 'asc':
+                return this.props.sort.type === "date" ? pens.sort((a,b) => a.time >= b.time) : pens.sort((a,b) => a.vote >= b.vote)
+            case 'desc':
+                return this.props.sort.type === "date" ? pens.sort((a,b) => a.time < b.time) : pens.sort((a,b) => a.vote < b.vote)
+        }
+    }
+
     render () {
-        const pens = this.props.pens.filter(pen => !pen.deleted)
+        const pens = this.sortPens(this.props.pens.filter(pen => !pen.deleted))
         return (
             <div className="container bottom-50">
                 <div className="row">
@@ -53,7 +63,7 @@ class Posts extends Component {
                                { pens.length ?
                                  "Write your new Pen"
                                   :
-                                 "Be the first one to create a pen here"
+                                 "Be the first one to create a Pen here"
                                }
                             </p>
                         </li>
@@ -66,6 +76,6 @@ class Posts extends Component {
 }
 
 const mapStatetoProps = ( state ) => ({
-
+    sort: state.sortType
 })
 export default withRouter(connect(mapStatetoProps)(Posts))
