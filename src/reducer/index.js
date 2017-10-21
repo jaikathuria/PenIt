@@ -2,15 +2,15 @@ import { combineReducers } from 'redux'
 
 const categories = [
       {
-        name: 'react',
+        name: 'React',
         path: 'react'
       },
       {
-        name: 'redux',
+        name: 'Redux',
         path: 'redux'
       },
       {
-        name: 'udacity',
+        name: 'Rdacity',
         path: 'udacity'
       }
 ]
@@ -29,6 +29,36 @@ const category = ( state = { categories }, action ) => {
     }
 }
 
+const sortType = (state = { type: "date", order: "asc" }, action) => {
+    switch (action.type) {
+        case 'SORT_DATE_ASC':
+            return {
+                ...state,
+                type: "date",
+                order: "asc",
+            }
+        case 'SORT_DATE_DESC':
+            return {
+                ...state,
+                type: "date",
+                order: "desc",
+            }
+        case 'SORT_VOTE_ASC':
+            return {
+                ...state,
+                type: "vote",
+                order: "asc",
+            }
+        case 'SORT_VOTE_DESC':
+            return {
+                ...state,
+                type: "vote",
+                order: "desc",
+            }
+        default:
+            return state
+    }
+}
 const modalState = {
     penModal: {
         active: false,
@@ -132,7 +162,10 @@ const pen = (state = { pens: [], currentPen: {} }, action) => {
         case 'FETCH_PEN':
             return {
                 ...state,
-                currentPen: action.data
+                currentPen: {
+                    ...action.data,
+                    deleted: action.data.deleted === undefined ? true : false,
+                }
             }
         case 'VOTE_PEN':
             return {
@@ -217,6 +250,7 @@ const comment = (state = { comments: [] }, action) => {
 
 export default combineReducers({
   modal,
+  sortType,
   category,
   pen,
   comment,
