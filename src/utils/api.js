@@ -117,7 +117,7 @@ export const fetchComments = (postId) =>
     - author: @string
     - body: @string
 */
-export const addAPIComment = (postId, { content, author }) =>
+export const addAPIComment = (postId, { body, author }) =>
     fetch(`${url}/comments`, {
         method: 'POST',
         headers: {
@@ -127,7 +127,7 @@ export const addAPIComment = (postId, { content, author }) =>
         body: JSON.stringify({
             id: uuidv4(),
             timestamp: Date.now(),
-            body: content,
+            body,
             author,
             parentId: postId
         })
@@ -143,7 +143,7 @@ export const addAPIComment = (postId, { content, author }) =>
   Object
     - body: @string
 */
-export const editComment = (id, { body }) =>
+export const editAPIComment = (id, { body }) =>
     fetch(`${url}/comments/${id}`,{
         method: 'PUT',
         headers: {

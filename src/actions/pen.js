@@ -91,3 +91,11 @@ export const votePen = ( pen ) => ({
       deleted: pen.deleted,
     }
 })
+
+export const CLEAR_PEN = "CLEAR_PEN"
+
+export const clearPen = () => {
+    return {
+        type: CLEAR_PEN
+    }
+}

@@ -11,15 +11,17 @@ import CommentInput from './CommentInput'
 import { getPost } from '../utils/api'
 /* Import Action */
 import { fetchPen } from '../actions/pen'
+import { closeCommentModal } from '../actions/modal'
 
 class PostView extends Component {
     componentDidMount() {
         const postid = this.props.match.params.id || false
         postid && this.getPen(postid)
+        this.props.dispatch(closeCommentModal())
     }
 
     componentWillReceiveProps( newProps ) {
-        if(newProps.match.params.category !== this.props.match.params.category){
+        if(newProps.match.params.id !== this.props.match.params.id){
             const postid = newProps.match.params.id || false
             postid && this.getPen(postid)
         }

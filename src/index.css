@@ -72,6 +72,11 @@ body {
 .comment-input {
     padding-top: 15px;
 }
+
+.grey-link {
+    cursor: pointer;
+    background-color: #eee;
+}
 /* --- Modal CSS --- */
 .modal {
     z-index: 1100; /* Greater than bootstraps Navbar */

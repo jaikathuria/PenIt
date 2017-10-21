@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+/* Import Action */
+import { editPenModal } from '../actions/modal'
 
 class Posts extends Component {
+    openEditModal = ( id ) => {
+        this.props.dispatch(editPenModal(id))
+    }
     render () {
         const pens = this.props.pens.filter(pen => !pen.deleted)
         return (
@@ -13,7 +19,7 @@ class Posts extends Component {
                         { pens.map((pen)=>(
                           <li className="list-group-item" key={ pen.id }>
                               <div className="btn-group pull-right tool-box">
-                                <button type="button" className="btn btn-default" onClick={ () => { this.props.history.push(`/${pen.category}/${pen.id}/edit`)}}>
+                                <button type="button" className="btn btn-default" onClick={ () => {this.openEditModal(pen.id)}}>
                                     <span className="glyphicon glyphicon-pencil"></span>
                                 </button>
                                 <button type="button" className="btn btn-default" onClick={()=>{this.props.delete(pen.id)}}>
@@ -42,10 +48,11 @@ class Posts extends Component {
                     </div>
                 </div>
               </div>
-
         )
     }
 }
 
+const mapStatetoProps = ( state ) => ({
 
-export default withRouter(Posts)
+})
+export default withRouter(connect(mapStatetoProps)(Posts))

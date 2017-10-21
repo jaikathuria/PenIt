@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { fetchComments, deleteAPIComment, voteAPIComment } from '../utils/api'
 /* Import Action */
 import { getComments, deleteComment, voteComment } from '../actions/comments'
+import { editCommentModal, newCommentModal } from '../actions/modal'
 
 
 class Comments extends Component {
@@ -39,6 +40,17 @@ class Comments extends Component {
             <div className="row">
               <div className="col-xs-12 col-sm-offset-2 col-sm-8">
                 <div className="list-group">
+                  <div className="list-group-item grey-link" onClick={()=>{this.props.dispatch(newCommentModal())}}>
+                    <div>
+                      <div className="list-group-item-text text-center">
+                          { comments.length ?
+                            ( "Give your suggestion about this Pen ")
+                            :
+                            ( "Be the first one to comment on this Pen")
+                          }
+                      </div>
+                    </div>
+                  </div>
                   { comments.map(comment => (
                     <div className="list-group-item" key={comment.id}>
                       <div>
@@ -51,7 +63,7 @@ class Comments extends Component {
                       </div>
                       <div className="comment-box">
                         <div className="btn-group btn-group-sm pull-right tool-box">
-                          <button type="button" className="btn btn-default">
+                          <button type="button" className="btn btn-default" onClick={()=>{ this.props.dispatch( editCommentModal(comment.id)) }}>
                             <span className="glyphicon glyphicon-pencil"></span>
                           </button>
                           <button type="button" className="btn btn-default" onClick={()=>{ this.deleteHandler( comment.id )}}>

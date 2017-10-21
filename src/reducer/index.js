@@ -29,10 +29,67 @@ const category = ( state = { categories }, action ) => {
     }
 }
 
-const modal = (state = false, action) => {
+const modalState = {
+    penModal: {
+        active: false,
+        id: null
+    },
+    commentModal: {
+        active: false,
+        id: null
+    }
+}
+
+const modal = (state = modalState, action) => {
     switch (action.type) {
-        case 'MODAL_TOGGLE':
-            return action.bool
+        case 'CLOSE_PEN_MODAL':
+            return {
+                ...state,
+                penModal: {
+                    active: false,
+                    id: null
+                }
+            }
+        case 'NEW_PEN_MODAL':
+            return {
+                ...state,
+                penModal: {
+                    active: true,
+                    id: null
+                }
+            }
+        case 'EDIT_PEN_MODAL':
+            return {
+                ...state,
+                penModal: {
+                    active: true,
+                    id: action.id
+                }
+            }
+        case 'CLOSE_COMMENT_MODAL':
+            return {
+                ...state,
+                commentModal: {
+                    active: false,
+                    id: null
+                }
+            }
+        case 'NEW_COMMENT_MODAL':
+            return {
+                ...state,
+                commentModal: {
+                    active: true,
+                    id: null
+                }
+            }
+        case 'EDIT_COMMENT_MODAL':
+            return {
+                ...state,
+                commentModal: {
+                    active: true,
+                    id: action.id
+                }
+            }
         default:
             return state
     }
@@ -92,6 +149,11 @@ const pen = (state = { pens: [], currentPen: {} }, action) => {
                     return pen
                 })
             }
+        case 'CLEAR_PEN':
+            return {
+                ...state,
+                currentPen: {}
+            }
         default:
             return state
     }
@@ -110,7 +172,9 @@ const comment = (state = { comments: [] }, action) => {
           return {
               ...state,
               comments: state.comments.map((comment)=>{
-                  if(comment.id === action.id) return action.id
+                  if(comment.id === action.data.id){
+                      return action.data
+                  }
                   return comment
               })
           }

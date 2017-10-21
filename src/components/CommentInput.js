@@ -1,17 +1,40 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 /* Import API methods */
-import { addAPIComment } from '../utils/api'
+import { addAPIComment, editAPIComment } from '../utils/api'
 /* Import Action */
-import { addComment } from '../actions/comments'
+import { addComment, editComment } from '../actions/comments'
+import { closeCommentModal } from '../actions/modal'
 
 class CommentInput extends Component {
+    comment = {}
+
+    componentDidMount() {
+        this.selectEditComment( this.props.modal.id )
+    }
+    componentWillReceiveProps ( newProps ) {
+        if ( newProps.modal.id && newProps.modal.id !== this.props.modal.id ){
+            this.selectEditComment ( newProps.modal.id )
+        }
+    }
+
     state = {
         author: this.props.comment.author || "",
         content: this.props.comment.content || "",
     }
 
+    selectEditComment = ( id ) => {
+        if( id ){
+            this.comment = this.props.comments.filter(comment => comment.id === id)[0]
+            this.setState({
+                author: this.comment.author,
+                content: this.comment.content,
+            })
+        }
+    }
+
     regex = /^[0-9a-zA-Z,.()+\/\s-]*$/
+
 
     handleChange = ( event ) => {
         const input = event.target
@@ -46,18 +69,26 @@ class CommentInput extends Component {
         }
         const comment = {
             author: this.state.author,
-            content: this.state.content,
+            body: this.state.content,
         }
-        addAPIComment(this.props.postid, comment).then(comment => this.props.dispatch(addComment( comment )))
+
+        this.props.modal.id ?
+          editAPIComment( this.props.modal.id , comment).then( comment => this.props.dispatch(editComment ( comment )))
+          :
+          addAPIComment(this.props.postid, comment).then(comment => this.props.dispatch(addComment( comment )))
+
+        this.props.dispatch(closeCommentModal())
+        
         this.setState({
             author: "",
             content: "",
         })
 
+
     }
 
     render () {
-        return (
+        return this.props.modal.active && (
           <nav className="navbar navbar-default navbar-fixed-bottom comment-input">
             <div className="container">
               <div className="row">
@@ -68,7 +99,7 @@ class CommentInput extends Component {
                         <input type="text" className="form-control full-input top-10" placeholder="Author" value={ this.state.author } name="author" onChange={this.handleChange} ref="author"/>
                         <input type="text" className="form-control full-input top-10" placeholder="Content" value={ this.state.content} name="content" onChange={this.handleChange} ref="content"/>
                         <button className="btn btn-default top-10" type="submit">Submit</button>
-                        <button className="btn btn-default top-10 pull-right" type="button"> Close </button>
+                        <button className="btn btn-default top-10 pull-right" type="button" onClick={()=>{ this.props.dispatch(closeCommentModal()) }}> Close </button>
                       </form>
                     </div>
                   </div>
@@ -80,5 +111,7 @@ class CommentInput extends Component {
     }
 }
 const mapStatetoProps = ( state ) => ({
+    modal: state.modal.commentModal,
+    comments: state.comment.comments
 })
 export default connect(mapStatetoProps)(CommentInput)

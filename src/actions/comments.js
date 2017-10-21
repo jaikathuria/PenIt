@@ -35,14 +35,19 @@ export const addComment = ( comment ) => ({
 
 export const EDIT_COMMENT = "EDIT_COMMENT"
 
-export const editComment = ({ id, content, author, time }) => ({
+export const editComment = ( comment ) => ({
     type: EDIT_COMMENT,
     data: {
-      content,
-      author,
-      time,
-    },
-    id,
+      id: comment.id,
+      parentId: comment.parentId,
+      time: comment.timestamp,
+      content: comment.body,
+      author: comment.author,
+      vote: comment.voteScore,
+      deleted: comment.deleted,
+      parentDeleted: comment.parentDeleted,
+    }
+
 })
 
 export const DELETE_COMMENT = "DELETE_COMMENT"

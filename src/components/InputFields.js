@@ -79,6 +79,12 @@ export default class InputFields extends Component {
             title: this.state.title,
             category: this.state.category,
         }
+        this.setState({
+          author: "",
+          title: "",
+          content: "",
+          category: "",
+        })
         this.props.addPen( pen )
     }
 

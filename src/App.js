@@ -15,7 +15,6 @@ export default class App extends Component {
           </Switch>
           <Switch>
               <Route exact path="/:category/:id" component={PostView} />
-              <Route exact path="/:category/:id/edit" component={EditView}/>
           </Switch>
       </div>
     )
