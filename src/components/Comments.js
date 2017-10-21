@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 /* Import API methods */
 import { fetchComments, deleteAPIComment, voteAPIComment } from '../utils/api'
 /* Import Action */

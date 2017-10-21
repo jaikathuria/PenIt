@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 /* Import Action */
-import { editPenModal } from '../actions/modal'
+import { editPenModal, newPenModal } from '../actions/modal'
+import { clearPen } from '../actions/pen'
 
 class Posts extends Component {
     openEditModal = ( id ) => {
@@ -44,6 +45,18 @@ class Posts extends Component {
                               </p>
                           </li>
                         ))}
+                        <li className="list-group-item grey-link text-center" onClick={()=>{
+                            this.props.dispatch(clearPen())
+                            this.props.dispatch(newPenModal())
+                          }} >
+                            <p className="list-group-item-text">
+                               { pens.length ?
+                                 "Write your new Pen"
+                                  :
+                                 "Be the first one to create a pen here"
+                               }
+                            </p>
+                        </li>
                       </ul>
                     </div>
                 </div>

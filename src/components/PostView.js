@@ -7,17 +7,19 @@ import Post from './Post'
 import Comments from './Comments'
 import BottomSort from './BottomSort'
 import CommentInput from './CommentInput'
+import Error404 from './Error404'
 /* Import API methods */
 import { getPost } from '../utils/api'
 /* Import Action */
 import { fetchPen } from '../actions/pen'
-import { closeCommentModal } from '../actions/modal'
+import { closeCommentModal, closePenModal } from '../actions/modal'
 
 class PostView extends Component {
     componentDidMount() {
         const postid = this.props.match.params.id || false
         postid && this.getPen(postid)
         this.props.dispatch(closeCommentModal())
+        this.props.dispatch(closePenModal())
     }
 
     componentWillReceiveProps( newProps ) {
@@ -28,7 +30,9 @@ class PostView extends Component {
     }
 
     getPen( id ) {
-      getPost(id).then(pen => this.props.dispatch(fetchPen(pen)))
+      getPost(id).then(pen => {
+        this.props.dispatch(fetchPen(pen))
+      })
     }
 
     render() {
@@ -36,10 +40,18 @@ class PostView extends Component {
           <div>
             <Modal/>
             <TopNav title={`Pen-it`}/>
-            <Post pen={this.props.pen}/>
-            <Comments postid={this.props.pen.id}/>
-            <BottomSort/>
-            <CommentInput comment={{}} postid={this.props.pen.id}/>
+            {(this.props.pen.deleted)?
+            (
+              <Error404/>
+            )
+              :
+            (
+              <div>
+                <Post pen={this.props.pen}/>
+                <Comments postid={this.props.pen.id}/>
+                <CommentInput comment={{}} postid={this.props.pen.id}/>
+              </div>
+            )}
           </div>
         )
     }

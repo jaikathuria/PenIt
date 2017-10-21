@@ -33,7 +33,7 @@ class CommentInput extends Component {
         }
     }
 
-    regex = /^[0-9a-zA-Z,.()+\/\s-]*$/
+    regex = /^[0-9a-zA-Z,.()+\s-]*$/
 
 
     handleChange = ( event ) => {
@@ -78,7 +78,7 @@ class CommentInput extends Component {
           addAPIComment(this.props.postid, comment).then(comment => this.props.dispatch(addComment( comment )))
 
         this.props.dispatch(closeCommentModal())
-        
+
         this.setState({
             author: "",
             content: "",

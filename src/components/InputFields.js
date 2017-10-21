@@ -20,7 +20,7 @@ export default class InputFields extends Component {
         }
     }
 
-    regex = /^[0-9a-zA-Z,.!()+\/\s-]*$/
+    regex = /^[0-9a-zA-Z,.!()+\s-]*$/
 
     handleChange = (event) => {
         const input = event.target
