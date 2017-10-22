@@ -33,8 +33,9 @@ class Post extends Component {
                                 <div className="panel-title big-bold pull-left">{ pen.title || "Title of a great Pen!" }</div>
                             </div>
                             <div className="text-center block">
-                                <div className="panel-title" > - { pen.author }</div>
+                                <div className="panel-title" > - { pen.author } </div>
                             </div>
+                            <div className="btn btn-default pull-right"> <span className="glyphicon glyphicon-comment"></span> | { pen.commentCount } </div>
                           </div>
                           <div className="panel-body">
                               { pen.content || "We are fetching some great content for you!" }
@@ -62,7 +63,6 @@ class Post extends Component {
 }
 
 const mapStatetoProps = (state) =>({
-
 })
 
 export default withRouter(connect(mapStatetoProps)(Post))

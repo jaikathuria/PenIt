@@ -18,7 +18,6 @@ class ListView extends Component {
       this.props.dispatch(closePenModal())
       const category = this.props.match.params.category || false
       this.getPens(category)
-
     }
 
     componentWillReceiveProps( newProps ) {

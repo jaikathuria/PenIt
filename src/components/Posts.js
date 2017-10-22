@@ -37,6 +37,11 @@ class Posts extends Component {
                                     <span className="glyphicon glyphicon-trash"></span>
                                 </button>
                               </div>
+
+                              <div className="btn-group pull-right tool-box">
+                                <div className="btn btn-default pull-right"> <span className="glyphicon glyphicon-comment"></span> | { pen.commentCount } </div>
+                              </div>
+
                               <div className="btn-group pull-right">
                                 <button type="button" className="btn btn-default" onClick={ ()=> {this.props.vote(pen.id,1)} }><span className="glyphicon glyphicon-chevron-up"></span></button>
                                 <button className="btn btn-default"><span className="badge score">{ pen.vote }</span></button>

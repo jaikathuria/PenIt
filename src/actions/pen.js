@@ -12,6 +12,7 @@ export const fetchPens = ( pens ) => ({
         vote: pen.voteScore,
         author: pen.author,
         deleted: pen.deleted,
+        commentCount: pen.commentCount
       }
     })
 })
@@ -29,6 +30,7 @@ export const fetchPen = ( pen ) => ({
       vote: pen.voteScore,
       author: pen.author,
       deleted: pen.deleted,
+      commentCount: pen.commentCount
     }
 })
 
@@ -46,6 +48,7 @@ export const addPen = ( pen )  => ({
         vote: pen.voteScore,
         author: pen.author,
         deleted: pen.deleted,
+        commentCount: pen.commentCount
     }
 })
 
@@ -63,6 +66,7 @@ export const editPen = ( pen ) => ({
         vote: pen.voteScore,
         author: pen.author,
         deleted: pen.deleted,
+        commentCount: pen.commentCount
     }
 
 })
@@ -89,6 +93,7 @@ export const votePen = ( pen ) => ({
       vote: pen.voteScore,
       author: pen.author,
       deleted: pen.deleted,
+      commentCount: pen.commentCount
     }
 })
 

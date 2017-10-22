@@ -24,6 +24,6 @@ Udacity Reddit Clone project for ReactND
 
     * App can now be accessed at: ```localhost:3000```
 
-  * ### Github Hosted
-
-    * WebApp is also accessible at [PenIt](https://jaikathuria.github.io/PenIt/)
+## Backend:
+  Backend for this app is provided by Udacity as the starter code for the project.
+  Backend is hosted at Heroku at: [PenIt Backend](https://penit.herokuapp.com/)
