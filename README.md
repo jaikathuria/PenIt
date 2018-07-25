@@ -1,6 +1,6 @@
 # Pen**It**
 
-Udacity Reddit Clone project for ReactND
+Penit is a social content and discussion web application that allows users to submit content in addition to voting and commenting. Leveraged [React](https://reactjs.org/) to build a dynamic user interface, as well as [Redux](http://redux.js.org/) to manage global application state.
 
 ## Libraries:
   * [React](https://reactjs.org/)
