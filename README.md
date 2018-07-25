@@ -1,4 +1,4 @@
-# Pen It
+# Pen**It**
 
 Udacity Reddit Clone project for ReactND
 
@@ -26,4 +26,6 @@ Udacity Reddit Clone project for ReactND
 
 ## Backend:
   Backend for this app is provided by Udacity as the starter code for the project.
-  Backend is hosted at Heroku at: [PenIt Backend](https://penit.herokuapp.com/)
+  Backend is hosted at Heroku at: [PenIt Backend](https://penit.herokuapp.com/api)
+
+## Live App: [PenIt](https://penit.herokuapp.com/)
