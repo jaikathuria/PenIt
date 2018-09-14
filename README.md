@@ -8,7 +8,7 @@ Penit is a social content and discussion web application that allows users to su
   * [Bootstrap](http://getbootstrap.com/)
 
 ## Prerequisites:
-  * [Node Package Manager](https://www.npmjs.com/)
+  * [Yarn](https://yarnpkg.com/en/)
 
 ## How to run:
   * ### Local Instance
